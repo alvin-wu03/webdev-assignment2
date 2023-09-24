@@ -31,7 +31,17 @@ function selectColor(){
 
 // Fill all uncolored cells
 function fillU(){
-    alert("Clicked Fill All Uncolored"); // Replace this line with your code.
+    // Get all td elements
+    const tds = document.getElementsByTagName("td");
+    // List of all possible colors
+    const colors = [ "red", "blue", "green", "yellow"]
+
+    // Loop through all td elements and set their background color
+    for (let i = 0; i < tds.length; i++) {
+        if(!colors.includes(tds[i].style.backgroundColor.valueOf())){
+            tds[i].style.backgroundColor = document.getElementById("selectedColorId").value;
+        }
+    }
 }
 
 // Fill all cells
