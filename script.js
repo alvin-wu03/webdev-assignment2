@@ -10,7 +10,14 @@ function addR() {
 
 // Add a column
 function addC() {
-    alert("Clicked Add Col"); // Replace this line with your code.
+    var table = document.getElementById('grid');
+    if (numRows == 0)
+        {
+        table.insertRow(numRows);
+        numRows++;
+        }
+    table.rows[table.rows.length - 1].insertCell(numCols);
+    numCols++;
 }
 
 // Remove a row
