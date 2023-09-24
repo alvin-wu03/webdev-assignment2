@@ -1,7 +1,7 @@
 // Declare global variables
 let numRows = 0;
 let numCols = 0;
-let colorSelected; 
+let colorSelected;
 
 // Add a row
 function addR() {
@@ -15,7 +15,12 @@ function addR() {
     else
         {
         for (var i = 0; i < numCols; i++)
-            {table.rows[table.rows.length - 1].insertCell(i);}
+            {
+            let newCell = table.rows[table.rows.length - 1].insertCell(i);
+            newCell.onclick = function () {
+              this.style.backgroundColor = colorSelected;
+            };
+            }
         }
     numRows++;
 }
@@ -29,7 +34,12 @@ function addC() {
         numRows++;
         }
     for (var i = 0; i < numRows; i++)
-        {table.rows[i].insertCell(numCols);}
+        {
+        let newCell = table.rows[i].insertCell(numCols);
+        newCell.onclick = function () {
+          this.style.backgroundColor = colorSelected;
+        };
+        }
     numCols++;
 }
 
