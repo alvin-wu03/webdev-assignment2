@@ -41,5 +41,11 @@ function fillAll(){
 
 // Clear all cells
 function clearAll(){
-    alert("Clicked Clear All"); // Replace this line with your code.
+    // Get all td elements
+    const tds = document.getElementsByTagName("td");
+
+    // Loop through all td elements and set their background color to white
+    for (let i = 0; i < tds.length; i++) {
+        tds[i].style.backgroundColor = "white";
+    }
 }
