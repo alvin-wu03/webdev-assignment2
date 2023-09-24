@@ -39,7 +39,7 @@ function fillU(){
     // Loop through all td elements and set their background color
     for (let i = 0; i < tds.length; i++) {
         if(!colors.includes(tds[i].style.backgroundColor.valueOf())){
-            tds[i].style.backgroundColor = document.getElementById("selectedColorId").value;
+            tds[i].style.backgroundColor = colorSelected;
         }
     }
 }
