@@ -16,7 +16,8 @@ function addC() {
         table.insertRow(numRows);
         numRows++;
         }
-    table.rows[table.rows.length - 1].insertCell(numCols);
+    for (var i = 0; i < numRows; i++)
+    table.rows[i].insertCell(numCols);
     numCols++;
 }
 
