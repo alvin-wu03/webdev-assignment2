@@ -6,13 +6,18 @@ let colorSelected;
 // Add a row
 function addR() {
     var table = document.getElementById('grid');
-    if (numCols > 0)
+    table.insertRow(numRows);
+    if (numCols == 0)
         {
-        table.insertRow(numRows);
+        table.rows[table.rows.length - 1].insertCell(0);
+        numCols++;
+        }
+    else
+        {
         for (var i = 0; i < numCols; i++)
             {table.rows[table.rows.length - 1].insertCell(i);}
-        numRows++;
         }
+    numRows++;
 }
 
 // Add a column
@@ -24,7 +29,7 @@ function addC() {
         numRows++;
         }
     for (var i = 0; i < numRows; i++)
-    table.rows[i].insertCell(numCols);
+        {table.rows[i].insertCell(numCols);}
     numCols++;
 }
 
