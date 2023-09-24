@@ -66,7 +66,13 @@ function fillU(){
 
 // Fill all cells
 function fillAll(){
-    alert("Clicked Fill All"); // Replace this line with your code.
+    // Get all td elements
+    const tds = document.getElementsByTagName("td");
+
+    // Loop through all td elements and set their background color
+    for (let i = 0; i < tds.length; i++) {
+        tds[i].style.backgroundColor = colorSelected;
+    }
 }
 
 // Clear all cells
