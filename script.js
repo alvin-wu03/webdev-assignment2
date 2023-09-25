@@ -41,8 +41,8 @@ function addC() {
 // Remove a row
 function removeR() {
     const table = document.getElementById('grid');
-    const rowInserted = numRows >= 1 ? true : false;//Check to see if a row was previously added
-    if (rowInserted) {
+    const rowWasInserted = numRows >= 1 ? true : false;//Check to see if a row was previously added
+    if (rowWasInserted) {
         table.deleteRow(table.rows.length - 1);
         numRows--;//decreament the number of rows
     }
@@ -50,10 +50,17 @@ function removeR() {
 
 // Remove a column
 function removeC() {
-    /* totally not implemented in this PR :)
     const table = document.getElementById('grid');
-    const colInserted = numCols >= 1 ? true : false;
-    */
+    const colWasInserted = numCols >= 1 ? true : false;//Check to see if there are any columns to remove
+    if (colWasInserted) {
+        for (var col = 0; col < table.rows.length; col++) {
+            var row = table.rows[col];
+            if (row.cells.length > 0) {
+                row.deleteCell(numCols - 1);
+            }
+        }
+        numCols--;//decreament the number of col
+    }
 }
 
 // Set global variable for selected color
