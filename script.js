@@ -9,8 +9,12 @@ function addR() {
     table.insertRow(numRows);
     if (numCols == 0)
         {
-        table.rows[table.rows.length - 1].insertCell(0);
+        let newCell = table.rows[table.rows.length - 1].insertCell(0);
+        newCell.onclick = function () {
+          this.style.backgroundColor = colorSelected;
+        };
         numCols++;
+
         }
     else
         {
