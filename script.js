@@ -42,9 +42,14 @@ function addC() {
 function removeR() {
     const table = document.getElementById('grid');
     const rowWasInserted = numRows >= 1 ? true : false;//Check to see if a row was previously added
-    if (rowWasInserted) {
+    if (rowWasInserted && numRows != 1) {
         table.deleteRow(table.rows.length - 1);
         numRows--;//decreament the number of rows
+    }
+    else if(numRows == 1){
+        table.deleteRow(table.rows.length - 1);
+        numRows--;//decreament the number of rows
+        numCols = 0;//reset column count
     }
 }
 
