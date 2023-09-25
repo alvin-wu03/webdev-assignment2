@@ -22,64 +22,82 @@ function addR() {
             {
             let newCell = table.rows[table.rows.length - 1].insertCell(i);
             newCell.onclick = function () {
-              this.style.backgroundColor = colorSelected;
+                this.style.backgroundColor = colorSelected;
             };
-            }
         }
+    }
     numRows++;
 }
 
 // Add a column
 function addC() {
     var table = document.getElementById('grid');
-    if (numRows == 0)
-        {
+    if (numRows == 0) {
         table.insertRow(numRows);
         numRows++;
-        }
-    for (var i = 0; i < numRows; i++)
-        {
+    }
+    for (var i = 0; i < numRows; i++) {
         let newCell = table.rows[i].insertCell(numCols);
         newCell.onclick = function () {
-          this.style.backgroundColor = colorSelected;
+            this.style.backgroundColor = colorSelected;
         };
-        }
+    }
     numCols++;
 }
 
 // Remove a row
 function removeR() {
-    alert("Clicked Remove Row"); // Replace this line with your code.
+    const table = document.getElementById('grid');
+    const rowWasInserted = numRows >= 1 ? true : false;//Check to see if a row was previously added
+    if (rowWasInserted && numRows != 1) {
+        table.deleteRow(table.rows.length - 1);
+        numRows--;//decreament the number of rows
+    }
+    else if(numRows == 1){
+        table.deleteRow(table.rows.length - 1);
+        numRows--;//decreament the number of rows
+        numCols = 0;//reset column count
+    }
 }
 
 // Remove a column
 function removeC() {
-    alert("Clicked Remove Col"); // Replace this line with your code.
+    const table = document.getElementById('grid');
+    const colWasInserted = numCols >= 1 ? true : false;//Check to see if there are any columns to remove
+    if (colWasInserted) {
+        for (var col = 0; col < table.rows.length; col++) {
+            var row = table.rows[col];
+            if (row.cells.length > 0) {
+                row.deleteCell(numCols - 1);
+            }
+        }
+        numCols--;//decreament the number of col
+    }
 }
 
 // Set global variable for selected color
-function selectColor(){
+function selectColor() {
     colorSelected = document.getElementById("selectedColorId").value;
     console.log(colorSelected);
 }
 
 // Fill all uncolored cells
-function fillU(){
+function fillU() {
     // Get all td elements
     const tds = document.getElementsByTagName("td");
     // List of all possible colors
-    const colors = [ "red", "blue", "green", "yellow"]
+    const colors = ["red", "blue", "green", "yellow"]
 
     // Loop through all td elements and set their background color
     for (let i = 0; i < tds.length; i++) {
-        if(!colors.includes(tds[i].style.backgroundColor.valueOf())){
+        if (!colors.includes(tds[i].style.backgroundColor.valueOf())) {
             tds[i].style.backgroundColor = colorSelected;
         }
     }
 }
 
 // Fill all cells
-function fillAll(){
+function fillAll() {
     // Get all td elements
     const tds = document.getElementsByTagName("td");
 
@@ -90,7 +108,7 @@ function fillAll(){
 }
 
 // Clear all cells
-function clearAll(){
+function clearAll() {
     // Get all td elements
     const tds = document.getElementsByTagName("td");
 
