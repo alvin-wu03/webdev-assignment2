@@ -7,12 +7,19 @@ let colorSelected;
 function addR() {
     var table = document.getElementById('grid');
     table.insertRow(numRows);
-    if (numCols == 0) {
-        table.rows[table.rows.length - 1].insertCell(0);
+    if (numCols == 0)
+        {
+        let newCell = table.rows[table.rows.length - 1].insertCell(0);
+        newCell.onclick = function () {
+          this.style.backgroundColor = colorSelected;
+        };
         numCols++;
-    }
-    else {
-        for (var i = 0; i < numCols; i++) {
+
+        }
+    else
+        {
+        for (var i = 0; i < numCols; i++)
+            {
             let newCell = table.rows[table.rows.length - 1].insertCell(i);
             newCell.onclick = function () {
                 this.style.backgroundColor = colorSelected;
