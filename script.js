@@ -46,7 +46,7 @@ function removeR() {
         table.deleteRow(table.rows.length - 1);
         numRows--;//decreament the number of rows
     }
-    else if(numRows == 1){
+    else if (numRows == 1) {
         table.deleteRow(table.rows.length - 1);
         numRows--;//decreament the number of rows
         numCols = 0;//reset column count
@@ -56,15 +56,20 @@ function removeR() {
 // Remove a column
 function removeC() {
     const table = document.getElementById('grid');
-    const colWasInserted = numCols >= 1 ? true : false;//Check to see if there are any columns to remove
-    if (colWasInserted) {
+    if (numCols >= 1) {
         for (var col = 0; col < table.rows.length; col++) {
             var row = table.rows[col];
             if (row.cells.length > 0) {
                 row.deleteCell(numCols - 1);
             }
         }
-        numCols--;//decreament the number of col
+        numCols--; // Decrease the number of columns
+        if (numCols === 0) {
+            while (table.rows.length > 0) {// If there are no columns left, remove all rows
+                table.deleteRow(0);
+                numRows--; // Decrease the number of rows
+            }
+        }
     }
 }
 
